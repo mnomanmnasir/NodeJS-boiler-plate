@@ -33,6 +33,9 @@ const connectDB = require("./config/connectDB");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoute");
+// const otpRoutes = require("./routes/otpRoutes"); // ✅ Import OTP Routes
+
 
 // dot config
 // dotenv.config({path: './config/'})
@@ -51,14 +54,10 @@ app.use(morgan("dev"));
 // app.use(colors())
 
 // routes
-// app.get('/', (req, res) => {
-//     res.status(200).json({
-//         message: "Welcome to Blood Bank App"
-//     })
-// })
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
-
+app.use("/api/users", userRoutes);
+// app.use("/api/otp", otpRoutes); // ✅ New OTP Routes
 
 // port
 const PORT = process.env.PORT || 8080;
